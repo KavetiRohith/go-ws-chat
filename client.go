@@ -55,7 +55,7 @@ func (c *Client) readPump() {
 			break
 		}
 		message = bytes.TrimSpace(bytes.Replace(message, []byte{'\n'}, []byte{' '}, -1))
-		c.hub.broadcast <- message
+		c.hub.broadcast <- broadcastMessage{message: message, client: c}
 	}
 }
 
